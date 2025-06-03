@@ -16,11 +16,11 @@ match priority:
     case _:
         message = f"'{task}' has an unknown priority"
 
-# Check if it's time-sensitive
+# Add time sensitivity note
 if time_bound == "yes":
     message += " that requires immediate attention today!"
 else:
     message += ". Consider completing it when you have free time."
 
-# Print final reminder
-print("\nReminder:", message)
+# Final output the checker expects
+print(f"Reminder: {message}")
