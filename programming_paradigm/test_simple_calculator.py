@@ -1,17 +1,31 @@
-class BankAccount:
-    def __init__(self, initial_balance=0):
-        self.account_balance = initial_balance
+import unittest
+from simple_calculator import SimpleCalculator
 
-    def deposit(self, amount):
-        if amount > 0:
-            self.account_balance += amount
+class TestSimpleCalculator(unittest.TestCase):
 
-    def withdraw(self, amount):
-        if 0 < amount <= self.account_balance:
-            self.account_balance -= amount
-            return True
-        else:
-            return False
+    def setUp(self):
+        self.calc = SimpleCalculator()
 
-    def display_balance(self):
-        print(f"Current Balance: ${self.account_balance:.2f}")
+    def test_add(self):
+        self.assertEqual(self.calc.add(2, 3), 5)
+        self.assertEqual(self.calc.add(-1, 1), 0)
+        self.assertEqual(self.calc.add(-5, -5), -10)
+
+    def test_subtract(self):
+        self.assertEqual(self.calc.subtract(10, 5), 5)
+        self.assertEqual(self.calc.subtract(0, 5), -5)
+        self.assertEqual(self.calc.subtract(-3, -3), 0)
+
+    def test_multiply(self):
+        self.assertEqual(self.calc.multiply(4, 5), 20)
+        self.assertEqual(self.calc.multiply(-2, 3), -6)
+        self.assertEqual(self.calc.multiply(0, 100), 0)
+
+    def test_divide(self):
+        self.assertEqual(self.calc.divide(10, 2), 5)
+        self.assertAlmostEqual(self.calc.divide(5, 2), 2.5)
+        with self.assertRaises(ZeroDivisionError):
+            self.calc.divide(10, 0)
+
+if __name__ == '__main__':
+    unittest.main()
