@@ -1,10 +1,11 @@
+#!/usr/bin/env python3
 """
 shopping_list_manager.py
 A simple shopping list manager that allows users to add, remove, and view items.
 """
 
 def display_menu():
-    print("\nShopping List Manager")
+    print("Shopping List Manager")
     print("1. Add Item")
     print("2. Remove Item")
     print("3. View List")
@@ -43,7 +44,7 @@ def main():
             if not shopping_list:
                 print("Your shopping list is empty.")
             else:
-                print("\nYour Shopping List:")
+                print("Your Shopping List:")
                 for i, item in enumerate(shopping_list, 1):
                     print(f"{i}. {item}")
                     
@@ -53,9 +54,7 @@ def main():
             break
             
         else:
-            print("Invalid choice. Please enter a number between 1 and 4.")
+            print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
     main()
-
-    
